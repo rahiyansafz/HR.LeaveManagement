@@ -1,9 +1,11 @@
-﻿namespace HR.LeaveManagement.Application.Contracts.Persistence;
-public interface IGenericRepository<T> where T : class
+﻿using HR.LeaveManagement.Domain.Common;
+
+namespace HR.LeaveManagement.Application.Contracts.Persistence;
+public interface IGenericRepository<T> where T : BaseEntity
 {
-    Task<List<T>> GetAllAsync();
+    Task<IReadOnlyList<T>> GetAllAsync();
     Task<T> GetAsync(int id);
-    Task<T> CreateAsync(T entity);
-    Task<T> UpdateAsync(T entity);
-    Task<T> DeleteAsync(T entity);
+    Task CreateAsync(T entity);
+    Task UpdateAsync(T entity);
+    Task DeleteAsync(T entity);
 }
