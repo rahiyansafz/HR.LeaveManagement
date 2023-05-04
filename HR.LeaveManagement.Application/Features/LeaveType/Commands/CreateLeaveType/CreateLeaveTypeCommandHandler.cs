@@ -21,7 +21,7 @@ public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeComm
     {
         // Validate incoming data
         var validator = new CreateLeaveTypeCommandValidator(_leaveTypeRepository);
-        var validationResult = await validator.ValidateAsync(request);
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
 
         if (validationResult.Errors.Any())
             throw new BadRequestException("Invalid leave type", validationResult);
